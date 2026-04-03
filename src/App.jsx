@@ -212,7 +212,7 @@ export default function App() {
 
       const last30    = { google:buildPlatform(gL30), meta:buildPlatform(mL30) };
       const thisMonth = hasThisMonth
-        ? { google:buildPlatform(parseCSV(results[2],12).map(mapG).filter(r=>r.name&&r.name!==G.name)), meta:buildPlatform(parseCSV(results[3],0).map(mapM).filter(r=>r.name)) }
+        ? { google:buildPlatform(parseCSV(results[2],12).map(mapG).filter(r=>r.name&&r.name!==G.name&&isLive(r))), meta:buildPlatform(parseCSV(results[3],0).map(mapM).filter(r=>r.name)) }
         : last30;
       const lastMonth = hasLastMonth
         ? { google:buildPlatform(parseCSV(results[4],12).map(mapG).filter(r=>r.name&&r.name!==G.name)), meta:buildPlatform(parseCSV(results[5],0).map(mapM).filter(r=>r.name)) }
