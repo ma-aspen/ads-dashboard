@@ -215,7 +215,7 @@ export default function App() {
         ? { google:buildPlatform(parseCSV(results[2],12).map(mapG).filter(r=>r.name&&r.name!==G.name&&isLive(r))), meta:buildPlatform(parseCSV(results[3],0).map(mapM).filter(r=>r.name)) }
         : last30;
       const lastMonth = hasLastMonth
-        ? { google:buildPlatform(parseCSV(results[4],12).map(mapG).filter(r=>r.name&&r.name!==G.name)), meta:buildPlatform(parseCSV(results[5],0).map(mapM).filter(r=>r.name)) }
+        ? { google:buildPlatform(parseCSV(results[4],12).map(mapG).filter(r=>r.name&&r.name!==G.name&&isLive(r))), meta:buildPlatform(parseCSV(results[5],0).map(mapM).filter(r=>r.name)) }
         : DEMO.lastMonth;
 
       if (gL30.length===0 && mL30.length===0) { setSource("demo"); return; }
