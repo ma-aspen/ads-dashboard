@@ -207,7 +207,7 @@ export default function App() {
       const mapG = r => ({ name:String(r[G.name]||""), spend:parseFloat(r[G.spend])||0, budget:parseFloat(r[G.budget])||0, impressions:parseFloat(r[G.impressions])||0, clicks:parseFloat(r[G.clicks])||0, conversions:parseFloat(r[G.conversions])||0, revenue:parseFloat(r[G.revenue])||0, status:String(r[G.status]||"unknown").toLowerCase() });
       const mapM = r => ({ name:String(r[M.name]||""), spend:parseFloat(r[M.spend])||0, budget:parseFloat(r[M.budget])||0, impressions:parseFloat(r[M.impressions])||0, clicks:0, conversions:parseFloat(r[M.conversions])||0, revenue:parseFloat(r[M.revenue])||0, status:"active" });
 
-      const gL30 = parseCSV(results[0],12).map(mapG).filter(r=>r.name&&r.name!==G.name);
+      const isLive = r => (r.status === "enabled" || r.status === "active") && (r.spend || 0) > 0; const gL30 = parseCSV(results[0],12).map(mapG).filter(r=>r.name&&r.name!==G.name&&isLive(r));
       const mL30 = parseCSV(results[1],0).map(mapM).filter(r=>r.name);
 
       const last30    = { google:buildPlatform(gL30), meta:buildPlatform(mL30) };
